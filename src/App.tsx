@@ -1,32 +1,33 @@
-import Navbar from "./componnents/Navabar";
 
 
-import Testmonials from "./componnents/Testmonial";
-import Footer from "./componnents/Footer";
 
-import About from "./componnents/about";
-import Contactus from "./componnents/contact";
-
+import Home from "./components/Home";
+import Campus from "./components/Campus";
+import Library from "./components/Library";
+import Contact from "./components/contact";
+import Testmonial from "./components/Testmonial";
+import About from "./components/about";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navabar";
 
 function App() {
   return (
-
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      
-
+    <div className="bg-gray-100">
+      {/* Navbar fixed at top */}
       <Navbar />
-      
+
+      {/* Main Sections */}
+      <Home />
       <About />
-      <Contactus />
+      <Campus />
+      <Library />
+      <Testmonial />
+      <Contact />
 
-      <Testmonials />
-       
+      {/* Footer */}
       <Footer />
-
-
-
     </div>
-  )
+  );
 }
 
 export default App;
