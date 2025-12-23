@@ -1,68 +1,68 @@
- import { useState, useEffect } from "react";
+// Navbar.tsx - Clean Professional Version
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logo.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState("home");
+  const location = useLocation();
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrolled]);
+  }, []);
 
-  // Handle link click
-  const handleLinkClick = (linkId: string) => {
-    setActiveLink(linkId);
+  useEffect(() => {
     setMenuOpen(false);
-  };
+  }, [location.pathname]);
 
-  // Close menu on ESC key
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && menuOpen) {
-        setMenuOpen(false);
-      }
+      if (e.key === "Escape") setMenuOpen(false);
     };
-
+    
     document.addEventListener("keydown", handleEscKey);
     return () => document.removeEventListener("keydown", handleEscKey);
-  }, [menuOpen]);
+  }, []);
+
+  const navItems = [
+    { id: "home", label: "Home", path: "/" },
+    { id: "about", label: "About", path: "/about" },
+    { id: "campus", label: "Campus", path: "/campus" },
+    { id: "library", label: "Library", path: "/library" },
+    { id: "testimonial", label: "Testimonials", path: "/testimonial" },
+  ];
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
-    <header 
-      className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${menuOpen ? styles.menuOpen : ""}`}
-      role="banner"
-    >
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.navbar} aria-label="Main Navigation">
         
-        {/* Brand with enhanced animation */}
-        <div className={styles.brand}>
+        {/* Brand */}
+        <Link to="/" className={styles.brand}>
           <div className={styles.logoContainer}>
             <img 
               src={logo} 
               alt="Ethiopian Berhana Kiristos Church Logo"
               className={styles.logoImage}
-              loading="eager"
             />
-            <div className={styles.logoGlow}></div>
           </div>
-          <span className={styles.brandText}>
+          <div className={styles.brandText}>
             <span className={styles.brandLine1}>Ethiopian</span>
             <span className={styles.brandLine2}>Berhana Kiristos Church</span>
-          </span>
-        </div>
+          </div>
+        </Link>
 
-        {/* Animated Hamburger Icon */}
+        {/* Hamburger Menu */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.hamburgerActive : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -74,74 +74,45 @@ export default function Navbar() {
           <span className={styles.hamburgerLine}></span>
         </button>
 
-        {/* Navigation Links with enhanced animations */}
-        <div className={styles.navOverlay} onClick={() => setMenuOpen(false)}></div>
-        <ul
-          className={`${styles.navLinks} ${
-            menuOpen ? styles.navActive : ""
-          }`}
-          role="menubar"
-        >
-          {[
-            { id: "home", label: "Home", href: "#home" },
-            { id: "about", label: "About", href: "#about" },
-            { id: "campus", label: "Campus", href: "#campus" },
-            { id: "library", label: "Library", href: "#library" },
-            { id: "testimonial", label: "Testimonial", href: "#testimonial" },
-          ].map((item, index) => (
-            <li 
-              key={item.id} 
-              className={styles.navItem}
-              role="none"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <a
-                href={item.href}
-                className={`${styles.navLink} ${activeLink === item.id ? styles.active : ""}`}
-                role="menuitem"
-                onClick={() => handleLinkClick(item.id)}
-                onMouseEnter={(e) => e.currentTarget.classList.add(styles.hoverEffect)}
-                onMouseLeave={(e) => e.currentTarget.classList.remove(styles.hoverEffect)}
+        {/* Overlay for mobile */}
+        <div 
+          className={styles.navOverlay} 
+          onClick={() => setMenuOpen(false)}
+          style={{ opacity: menuOpen ? 1 : 0, pointerEvents: menuOpen ? 'auto' : 'none' }}
+        />
+
+        {/* Navigation Links */}
+        <ul className={`${styles.navLinks} ${menuOpen ? styles.navActive : ""}`}>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <Link
+                to={item.path}
+                className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}
+                onClick={() => setMenuOpen(false)}
               >
-                <span className={styles.linkText}>{item.label}</span>
-                <span className={styles.linkUnderline}></span>
-              </a>
+                {item.label}
+              </Link>
             </li>
           ))}
-
-          {/* Donate Button with special animation */}
-          <li 
-            className={styles.navItem}
-            role="none"
-            style={{ animationDelay: "0.5s" }}
-          >
-            <a
-              href="Donate.tsx"
+          
+          <li>
+            <Link
+              to="/donate"
               className={styles.donateBtn}
-              role="menuitem"
-              onClick={() => handleLinkClick("donate")}
+              onClick={() => setMenuOpen(false)}
             >
-              <span className={styles.donateText}>Donate</span>
-              <span className={styles.donateGlow}></span>
-              <span className={styles.donateRipple}></span>
-            </a>
+              Donate
+            </Link>
           </li>
-
-          {/* Contact Link */}
-          <li 
-            className={styles.navItem}
-            role="none"
-            style={{ animationDelay: "0.6s" }}
-          >
-            <a
-              href="Contact.tsx"
-              className={`${styles.navLink} ${styles.contactLink} ${activeLink === "contact" ? styles.active : ""}`}
-              role="menuitem"
-              onClick={() => handleLinkClick("contact")}
+          
+          <li>
+            <Link
+              to="/contact"
+              className={`${styles.navLink} ${styles.contactLink} ${isActive('/contact') ? styles.active : ""}`}
+              onClick={() => setMenuOpen(false)}
             >
-              <span className={styles.linkText}>Contact</span>
-             
-            </a>
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>

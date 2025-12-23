@@ -1,0 +1,1050 @@
+/* Donate.module.css - Professional Design */
+
+/* Main Section */
+.donateSection {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+/* Animated Background */
+.animatedBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floatingCoin {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #008080, #00cccc);
+  border-radius: 50%;
+  animation: floatCoin 20s linear infinite;
+  opacity: 0.1;
+}
+
+.floatingCoin:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floatingCoin:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-delay: -7s;
+}
+
+.floatingCoin:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: -14s;
+}
+
+.lightBeam {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    transparent 0%,
+    rgba(0, 128, 128, 0.1) 50%,
+    transparent 100%
+  );
+  left: 30%;
+  animation: beamSweep 15s linear infinite;
+}
+
+/* Header Section */
+.headerSection {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.headerContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #008080, #00cccc);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+.badgeIcon {
+  font-size: 1.2rem;
+}
+
+.mainTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #008080, #00cccc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* Main Container */
+.donateContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+}
+
+/* Form Column */
+.formColumn {
+  position: relative;
+}
+
+.formCard {
+  background: white;
+  border-radius: 25px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 128, 128, 0.1);
+  animation: slideInLeft 0.8s ease;
+}
+
+/* Success Card */
+.successCard {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 1.5rem;
+  animation: scaleIn 0.5s ease;
+}
+
+.successTitle {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.successMessage {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.receiptNote {
+  color: #008080;
+  font-weight: 500;
+}
+
+/* Donation Form */
+.donationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formSection {
+  animation: fadeIn 0.5s ease;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(0, 128, 128, 0.1);
+}
+
+/* Donation Type */
+.optionButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.optionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 15px;
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.optionButton:hover {
+  border-color: #008080;
+  transform: translateY(-3px);
+}
+
+.activeOption {
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 204, 204, 0.1));
+  border-color: #008080;
+  color: #008080;
+  box-shadow: 0 10px 20px rgba(0, 128, 128, 0.1);
+}
+
+.optionIcon {
+  font-size: 2rem;
+}
+
+/* Amount Selection */
+.amountGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.amountButton {
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.amountButton:hover {
+  border-color: #008080;
+  transform: translateY(-2px);
+}
+
+.selectedAmount {
+  background: linear-gradient(135deg, #008080, #00cccc);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 5px 15px rgba(0, 128, 128, 0.2);
+}
+
+.customButton {
+  grid-column: span 3;
+}
+
+.customAmountContainer {
+  margin-top: 1rem;
+}
+
+.inputWithCurrency {
+  position: relative;
+}
+
+.customInput {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.customInput:focus {
+  outline: none;
+  border-color: #008080;
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+}
+
+.currency {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  color: #008080;
+}
+
+/* Ministry Selection */
+.ministryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.ministryCard {
+  position: relative;
+}
+
+.ministryRadio {
+  position: absolute;
+  opacity: 0;
+}
+
+.ministryLabel {
+  display: block;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ministryLabel:hover {
+  border-color: #008080;
+  transform: translateX(5px);
+}
+
+.ministryRadio:checked + .ministryLabel {
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 204, 204, 0.1));
+  border-color: #008080;
+}
+
+.ministryName {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.3rem;
+}
+
+.ministryDesc {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Form Elements */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.formInput {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #008080;
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+}
+
+.inputIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.formTextarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.formTextarea:focus {
+  outline: none;
+  border-color: #008080;
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #008080;
+}
+
+/* Payment Methods */
+.paymentMethods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.paymentMethod {
+  position: relative;
+}
+
+.paymentRadio {
+  position: absolute;
+  opacity: 0;
+}
+
+.paymentLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.paymentLabel:hover {
+  border-color: #008080;
+  transform: scale(1.05);
+}
+
+.paymentRadio:checked + .paymentLabel {
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 204, 204, 0.1));
+  border-color: #008080;
+}
+
+.paymentIcon {
+  font-size: 2rem;
+}
+
+.paymentName {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Submit Section */
+.totalAmount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.totalLabel {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.totalValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #008080;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #008080, #00cccc);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 128, 128, 0.3);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+.buttonIcon {
+  font-size: 1.5rem;
+}
+
+.buttonArrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.submitButton:hover .buttonArrow {
+  transform: translateX(5px);
+}
+
+.securityNote {
+  text-align: center;
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.lockIcon {
+  margin-right: 0.5rem;
+}
+
+/* Info Column */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.impactCard,
+.verseCard,
+.benefitsCard,
+.taxCard,
+.faqCard {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 128, 128, 0.1);
+  animation: slideInRight 0.8s ease;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.impactCard { animation-delay: 0.1s; }
+.verseCard { animation-delay: 0.2s; }
+.benefitsCard { animation-delay: 0.3s; }
+.taxCard { animation-delay: 0.4s; }
+.faqCard { animation-delay: 0.5s; }
+
+/* Impact Card */
+.impactTitle {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.impactStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.impactStat {
+  text-align: center;
+}
+
+.statNumber {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #008080;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Verse Card */
+.verseCard {
+  background: linear-gradient(135deg, #008080, #006666);
+  color: white;
+  text-align: center;
+}
+
+.verseIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.verseText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.verseReference {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Benefits Card */
+.benefitsTitle {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitsList li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.benefitsList li:last-child {
+  border-bottom: none;
+}
+
+.benefitIcon {
+  font-size: 1.2rem;
+  color: #008080;
+}
+
+/* Tax Card */
+.taxTitle {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.taxText {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* FAQ Card */
+.faqTitle {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.faqItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.faqItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.faqQuestion {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.3rem;
+}
+
+.faqAnswer {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Support Section */
+.supportSection {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+}
+
+.supportCard {
+  background: linear-gradient(135deg, #008080, #006666);
+  border-radius: 25px;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  animation: fadeInUp 1s ease;
+}
+
+.supportContent {
+  flex: 1;
+  max-width: 600px;
+}
+
+.supportTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.supportText {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.supportContacts {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.supportContact {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.supportContact:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+.contactIcon {
+  font-size: 1.5rem;
+}
+
+.supportIllustration {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.illustrationCircle {
+  width: 150px;
+  height: 150px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulseCircle 3s ease-in-out infinite;
+}
+
+.illustrationHand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  animation: bounceHand 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes floatCoin {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(180deg);
+  }
+}
+
+@keyframes beamSweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseCircle {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+@keyframes bounceHand {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .donateContainer {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+  
+  .supportCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .donateSection {
+    padding: 3rem 1rem;
+  }
+  
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .optionButtons {
+    grid-template-columns: 1fr;
+  }
+  
+  .amountGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .customButton {
+    grid-column: span 2;
+  }
+  
+  .paymentMethods {
+    grid-template-columns: 1fr;
+  }
+  
+  .impactStats {
+    grid-template-columns: 1fr;
+  }
+  
+  .supportContacts {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .formCard {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+  
+  .amountGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .customButton {
+    grid-column: span 1;
+  }
+  
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+  
+  .supportCard {
+    padding: 2rem;
+  }
+  
+  .supportTitle {
+    font-size: 1.8rem;
+  }
+  
+  .supportIllustration {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animatedBackground,
+  .formCard,
+  .impactCard,
+  .verseCard,
+  .benefitsCard,
+  .taxCard,
+  .faqCard,
+  .supportCard,
+  .optionButton,
+  .amountButton,
+  .ministryLabel,
+  .paymentLabel,
+  .submitButton,
+  .supportContact,
+  .verseIcon,
+  .illustrationCircle,
+  .illustrationHand {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .submitButton:hover,
+  .optionButton:hover,
+  .amountButton:hover,
+  .paymentLabel:hover,
+  .supportContact:hover {
+    transform: none;
+  }
+}

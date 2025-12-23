@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/about/about";
@@ -6,34 +7,33 @@ import Library from "./components/Librarys/Library";
 import Testmonial from "./components/Testmonial/Testmonial";
 import Donate from "./components/Donate/Donate";
 import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
 import Visit from "./components/visitus/Visit";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <>
+    <Router>
       {/* Fixed Navbar */}
-      <Navbar 
-      
-      
-      />
+      <Navbar />
 
-      {/* Page Sections */}
-      <main style={
-        { paddingTop: "80px" }}>
-        <Home />
-        <About />
-        <Campus />
-        <Library />
-        <Visit />
-        <Testmonial />
-        <Donate />
-        <Contact />
+      {/* Page Sections with routing */}
+      <main style={{ paddingTop: "80px" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/campus" element={<Campus />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/visit" element={<Visit />} />
+          <Route path="/Testmonial" element={<Testmonial />}/>
+          
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
 
       {/* Footer */}
       <Footer />
-    </>
+    </Router>
   );
 }
 

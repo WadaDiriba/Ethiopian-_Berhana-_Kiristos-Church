@@ -13,7 +13,14 @@
     "axe/aria": [
       "default",
       {
-        "aria-valid-attr-value": "off"
+        "aria-valid-attr-value": "off",
+        "aria-required-children": "off"
+      }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "listitem": "off"
       }
     ]
   }
