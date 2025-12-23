@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+ import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logo.png";
 
@@ -116,7 +116,7 @@ export default function Navbar() {
             style={{ animationDelay: "0.5s" }}
           >
             <a
-              href="#donate"
+              href="Donate.tsx"
               className={styles.donateBtn}
               role="menuitem"
               onClick={() => handleLinkClick("donate")}
@@ -134,13 +134,13 @@ export default function Navbar() {
             style={{ animationDelay: "0.6s" }}
           >
             <a
-              href="#contact"
+              href="Contact.tsx"
               className={`${styles.navLink} ${styles.contactLink} ${activeLink === "contact" ? styles.active : ""}`}
               role="menuitem"
               onClick={() => handleLinkClick("contact")}
             >
               <span className={styles.linkText}>Contact</span>
-              <span className={styles.contactIcon}>✉️</span>
+             
             </a>
           </li>
         </ul>

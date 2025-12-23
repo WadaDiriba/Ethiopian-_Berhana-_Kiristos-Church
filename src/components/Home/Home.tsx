@@ -44,6 +44,7 @@ export default function Home() {
         <h1>Welcome to Ethiopian Berhana Kiristos Church</h1>
         <p>Experience the light of Christ in our community.</p>
         <a href="#about" className={styles.btn}>Learn More</a>
+        <a href="/Visit" className={styles.btn}>Visit Branch</a>
       </div>
 
     </section>

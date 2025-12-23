@@ -479,3 +479,77 @@
     animation: none;
   }
 }
+
+
+/* Add these to your existing CSS */
+
+/* External page indicator icon */
+.externalIcon {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-left: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.navLink:hover .externalIcon {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.externalIconSmall {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-left: 0.3rem;
+  position: relative;
+  top: -1px;
+}
+
+.donateBtn .externalIconSmall {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.donateBtn:hover .externalIconSmall {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+/* Make brand clickable */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.brand:hover {
+  transform: translateX(5px);
+}
+
+/* Add tooltip for external pages */
+.navLink[href^="/"]::after,
+.donateBtn[href^="/"]::after {
+  content: " (Page)";
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-left: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .navLink[href^="/"]::after,
+  .donateBtn[href^="/"]::after {
+    content: "";
+  }
+}
+
+/* Active state for external pages when on that page */
+.navLink.activePage {
+  color: #00ffff;
+  font-weight: 600;
+}
+
+.navLink.activePage .linkUnderline {
+  width: 100%;
+  background: #00ffff;
+}
