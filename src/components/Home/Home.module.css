@@ -119,3 +119,51 @@
     transform: translateY(0);
   }
 }
+
+
+/* Tablets and mobile devices */
+@media (max-width: 1024px) {
+  .homeContent h1 {
+    font-size: 2.5rem;
+  }
+
+  .homeContent p {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeContent h1 {
+    font-size: 2rem;
+  }
+
+  .homeContent p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homeContent h1 {
+    font-size: 1.5rem;
+  }
+
+  .homeContent p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
