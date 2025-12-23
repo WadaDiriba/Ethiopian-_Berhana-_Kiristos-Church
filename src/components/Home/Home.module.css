@@ -1,0 +1,121 @@
+/* Main Section */
+.homeSection {
+  margin: 0;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+/* Slider Container */
+.slider {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+/* Each Slide */
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeSlider 15s infinite;
+  transform: scale(1);
+  transition: transform 15s ease-in-out;
+}
+
+/* Add smooth Ken Burns effect */
+.slide1 {
+  background-image: url("../../assets/home1.png");
+  animation-delay: 0s;
+}
+
+.slide2 {
+  background-image: url("../../assets/home2.png");
+  animation-delay: 5s;
+}
+
+.slide3 {
+  background-image: url("../../assets/home3.png");
+  animation-delay: 10s;
+}
+
+/* Fade Animation */
+@keyframes fadeSlider {
+  0% { opacity: 0; transform: scale(1); }
+  10% { opacity: 1; transform: scale(1.05); }
+  30% { opacity: 1; transform: scale(1.1); }
+  40% { opacity: 0; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Dark Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.65)
+  );
+  z-index: -1;
+}
+
+/* Content */
+.homeContent {
+  text-align: center;
+  max-width: 800px;
+  padding: 0 1rem;
+  animation: slideUp 1.2s ease forwards;
+}
+
+.homeContent h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* makes text readable on images */
+}
+
+.homeContent p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: teal;
+  color: #ffffff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+  background-color: #008080; /* slightly brighter teal */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* Content Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
