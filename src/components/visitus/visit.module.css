@@ -1,6 +1,7 @@
 /* visit.module.css */
 
 .visitSection {
+  
   padding: 10px 10px;
   background-color: #f9f9f9;
   text-align: center;
@@ -54,18 +55,15 @@
 .searchButton {
   padding: 12px 20px;
   font-size: 1rem;
-  background-color: #28d6aa;
-  color: #fff;
+  background-color: #d8a713;
+  color:black;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.searchButton:hover {
-  background-color: #c9cfce;
-  transform: translateY(-2px);
-}
+
 
 /* Map Container */
 .mapContainer {

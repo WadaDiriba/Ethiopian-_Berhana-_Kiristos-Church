@@ -22,7 +22,7 @@ export default function Visit() {
     <section className={styles.visitSection}>
       
       <div className={styles.visitContent}>
-        <h2 className={styles.visitTitle}>Get  Ethiopian Berhane Kiristos Church Near You</h2>
+        <h2 className={styles.visitTitle}>Get  Ethiopian Berhane Kristos Church Near You</h2>
         <p className={styles.visitText}>
           We would love to welcome you to our church. Here is some information to help you plan your to get us.
         </p>

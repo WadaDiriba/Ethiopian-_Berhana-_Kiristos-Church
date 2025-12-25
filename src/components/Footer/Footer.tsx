@@ -22,7 +22,7 @@ export default function Footer() {
     setCurrentYear(new Date().getFullYear());
 
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 500);
+      setShowScrollTop(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -46,16 +46,12 @@ export default function Footer() {
   const contactInfo = [
     {
       icon: <FaMapMarkerAlt />,
-      label: "3P54+GWH, Addis Ababa, Ethiopia",
-      href: "https://www.google.com/maps/place/Berhane+Kristos+Church+Head+Office/@9.0587859,38.7074158,43m/data=!3m1!1e3!4m7!3m6!1s0x164b89c7142ac885:0xb242a721e7778248!4b1!8m2!3d9.0588021!4d38.7073529!16s%2Fg%2F11s8rjdqjn?hl=en&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+      label: "3P54+GWH, Addis Ababa",
+      href: "https://maps.google.com",
     },
     {
       icon: <FaPhoneAlt />,
       label: "+251 11 123 4567",
-    },
-    {
-      icon: <FaPhoneAlt />,
-      label: "+251 91 123 4567",
     },
     {
       icon: <FaEnvelope />,
@@ -65,11 +61,10 @@ export default function Footer() {
     {
       icon: <FaInbox />,
       label: "P.O.Box-160689",
-      href: "https://www.google.com/maps/search/?api=1&query=P.O.Box-160689+Addis+Ababa",
     },
     {
       icon: <FaClock />,
-      label: "Monday – Friday | 2:00 AM – 11:00 AM",
+      label: "Mon-Fri: 2:00 AM – 11:00 AM",
     },
   ];
 
@@ -77,30 +72,23 @@ export default function Footer() {
     { icon: <FaFacebookF />, label: "Facebook", href: "https://facebook.com" },
     { icon: <FaInstagram />, label: "Instagram", href: "https://instagram.com" },
     { icon: <FaYoutube />, label: "YouTube", href: "https://youtube.com" },
-    { icon: <FaTelegramPlane />, label: "Telegram", href: "https://t.me/yourchannel" },
+    { icon: <FaTelegramPlane />, label: "Telegram", href: "https://t.me" },
   ];
 
   return (
     <footer className={styles.footer}>
-      {/* Animated Background Elements */}
-      <div className={styles.backgroundElements}>
-        <div className={styles.floatingCross}></div>
-        <div className={styles.floatingCross}></div>
-        <div className={styles.lightBeam}></div>
-      </div>
-
-      {/* Scroll to Top Button */}
+      {/* Compact Scroll to Top Button */}
       {showScrollTop && (
         <button
           className={styles.scrollTopButton}
           onClick={scrollToTop}
           aria-label="Scroll to top"
         >
-          <span className={styles.scrollArrow}>↑</span>
+          ↑
         </button>
       )}
 
-      {/* Main Footer Content */}
+      {/* Main Footer Content - More Compact */}
       <div className={styles.container}>
         {/* Church Info & Brand */}
         <div className={`${styles.section} ${styles.brandSection}`}>
@@ -110,7 +98,6 @@ export default function Footer() {
               alt="Ethiopian Berhane Kiristos Church Logo"
               className={styles.logo}
             />
-            <div className={styles.logoGlow}></div>
           </div>
 
           <h2 className={styles.churchName}>
@@ -119,8 +106,7 @@ export default function Footer() {
           </h2>
 
           <p className={styles.mission}>
-            Proclaiming the Gospel, Transforming Lives, and Building a
-            Christ-centered Community in Ethiopia and Entire the World.
+            Proclaiming the Gospel, Transforming Lives, and Building a Christ-centered Community.
           </p>
 
           {/* Social Media Links */}
@@ -131,89 +117,69 @@ export default function Footer() {
                 href={social.href}
                 className={styles.socialLink}
                 aria-label={social.label}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span className={styles.socialIcon}>{social.icon}</span>
-                <span className={styles.socialTooltip}>{social.label}</span>
+                {social.icon}
               </a>
             ))}
           </div>
         </div>
 
-        {/* Quick Links */}
+        {/* Quick Links - More Compact */}
         <div className={styles.section}>
           <h3 className={styles.sectionTitle}>
-            <span className={styles.titleIcon}>🔗</span> Quick Links
+            <span className={styles.titleIcon}>↗</span> Quick Links
           </h3>
 
           <ul className={styles.linksList}>
             {quickLinks.map((link, index) => (
-              <li
-                key={index}
-                className={styles.linkItem}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+              <li key={index} className={styles.linkItem}>
                 <a href={link.href} className={styles.link}>
                   <span className={styles.linkBullet}>›</span>
-                  <span className={styles.linkText}>{link.label}</span>
-                  <span className={styles.linkHoverLine}></span>
+                  {link.label}
                 </a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Contact Information */}
+        {/* Contact Information - More Compact */}
         <div className={styles.section}>
           <h3 className={styles.sectionTitle}>
-            <span className={styles.titleIcon}>📞</span> Head Office Bureau
+            <span className={styles.titleIcon}></span> Contact Us
           </h3>
 
           <div className={styles.contactList}>
             {contactInfo.map((item, index) => (
-              <a
+              <div
                 key={index}
-                href={item.href || "#"}
                 className={styles.contactItem}
-                target={item.href ? "_blank" : "_self"}
-                rel="noreferrer"
               >
                 <span className={styles.contactIcon}>{item.icon}</span>
-                <span className={styles.contactText}>{item.label}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* Newsletter Subscription */}
-          <div className={styles.newsletter}>
-            <h4 className={styles.newsletterTitle}>Stay Updated</h4>
-            <p className={styles.newsletterText}>
-              Subscribe to our weekly newsletter
-            </p>
-
-            <form className={styles.subscriptionForm}>
-              <div className={styles.inputGroup}>
-                <input
-                  type="email"
-                  placeholder="EBKC12@Yahoo.com"
-                  className={styles.emailInput}
-                  aria-label="Email for newsletter subscription"
-                />
-                <button type="submit" className={styles.subscribeButton}>
-                  <span className={styles.subscribeIcon}>→</span>
-                </button>
+                {item.href ? (
+                  <a 
+                    href={item.href} 
+                    className={styles.contactText}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <span className={styles.contactText}>{item.label}</span>
+                )}
               </div>
-            </form>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Compact Bottom Bar */}
       <div className={styles.bottomBar}>
         <div className={styles.bottomContent}>
           <div className={styles.copyright}>
-            © {currentYear} Ethiopian Berhane Kristos Church. All Rights
-            Reserved.
+            © {currentYear} Ethiopian Berhane Kristos Church. All Rights Reserved.
           </div>
         </div>
       </div>

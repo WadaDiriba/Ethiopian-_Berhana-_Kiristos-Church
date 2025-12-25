@@ -1,0 +1,51 @@
+/* History Page Styling */
+.historySection {
+  padding: 60px 20px;
+  background-color: #f8f9fa; /* Light background for contrast */
+  min-height: 80vh;
+}
+
+.historySection .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.historySection h1 {
+  font-size: 2.5rem;
+  color: #083344;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.historySection p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.historySection strong {
+  color: #0b1d2a;
+}
+
+.historySection a {
+  color: #083344;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.historySection a:hover {
+  color: #0b1d2a;
+}
+
+/* Optional: Responsive */
+@media (max-width: 768px) {
+  .historySection h1 {
+    font-size: 2rem;
+  }
+
+  .historySection p {
+    font-size: 0.95rem;
+  }
+}

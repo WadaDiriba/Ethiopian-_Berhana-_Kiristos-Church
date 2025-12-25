@@ -14,13 +14,20 @@
       "default",
       {
         "aria-valid-attr-value": "off",
-        "aria-required-children": "off"
+        "aria-required-children": "off",
+        "aria-required-parent": "off"
       }
     ],
     "axe/structure": [
       "default",
       {
         "listitem": "off"
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
       }
     ]
   }

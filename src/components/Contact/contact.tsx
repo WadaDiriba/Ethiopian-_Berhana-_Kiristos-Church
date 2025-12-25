@@ -1,5 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./Contact.module.css";
+
+
+import {
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaClock,
+ 
+  FaInbox,
+  
+} from "react-icons/fa";
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,29 +23,41 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    setError("");
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
+    setError("");
+
+    try {
+      const mailtoLink = `mailto:EBKC12@Yahoo.com
+        ?subject=${encodeURIComponent(formData.subject)}
+        &body=${encodeURIComponent(
+          `Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || "Not provided"}
+
+Message:
+${formData.message}`
+        )}`;
+
+      window.location.href = mailtoLink;
+
+      setIsSubmitted(true);
+
       setFormData({
         name: "",
         email: "",
@@ -42,295 +65,188 @@ export default function Contact() {
         subject: "",
         message: ""
       });
-    }, 3000);
+
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (err) {
+      console.error(err);
+      setError("Unable to open email app. Please contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
-    {
-      icon: "📍",
-      title: "Visit Our Church",
-      details: ["123 Faith Avenue", "Addis Ababa, Ethiopia", "P.O. Box 12345"],
-      link: "#map"
-    },
-    {
-      icon: "📞",
-      title: "Call Us",
-      details: ["+251 11 123 4567", "+251 91 123 4567"],
-      link: "tel:+251111234567"
-    },
-    {
-      icon: "✉️",
-      title: "Email Us",
-      details: ["info@ebkchurch.org", "support@ebkchurch.org"],
-      link: "mailto:info@ebkchurch.org"
-    },
-    {
-      icon: "⏰",
-      title: "Service Hours",
-      details: ["Sunday: 8AM - 12PM", "Wednesday: 6PM - 8PM", "Friday: 6PM - 8PM"],
-      link: "#services"
-    }
-  ];
-
-  const socialLinks = [
-    { icon: "📘", label: "Facebook", url: "#" },
-    { icon: "📷", label: "Instagram", url: "#" },
-    { icon: "🐦", label: "Twitter", url: "#" },
-    { icon: "📹", label: "YouTube", url: "#" }
+    { icon: <FaMapMarkerAlt />, label: "3P54+GWH, Addis Ababa" },
+    { icon: <FaPhoneAlt />, label: "+251 11 123 4567", href: "tel:+251111234567" },
+    { icon: <FaInbox />, label: "EBKC12@Yahoo.com", href: "mailto:EBKC12@Yahoo.com" },
+    { icon: <FaClock />, label: "Mon-Fri: 2:00 AM – 11:00 AM" }
   ];
 
   return (
     <section id="contact" className={styles.contactSection}>
-      
-      {/* Animated Background Elements */}
-      <div className={styles.backgroundElements}>
-        <div className={styles.crossElement}></div>
-        <div className={styles.crossElement}></div>
-        <div className={styles.crossElement}></div>
-      </div>
-
-      {/* Header Section */}
+      {/* Header */}
       <div className={styles.contactHeader}>
         <div className={styles.headerContent}>
-          <span className={styles.sectionBadge}>Get in Touch</span>
-          <h1 className={styles.mainTitle}>Contact Ethiopian Berhana Kiristos Church</h1>
-          <p className={styles.subtitle}>We'd love to hear from you. Reach out with your questions, prayer requests, or visit us for worship.</p>
+          <div className={styles.headerBadge}>
+            <div className={styles.badgeIcon}></div>
+            <span>Contact Head Office</span>
+          </div>
+         
+          <p className={styles.subtitle}>
+            Have questions, prayer requests, or need spiritual guidance? We're here to help.
+          </p>
         </div>
       </div>
 
       <div className={styles.contactContainer}>
-        {/* Left Column - Contact Information */}
+        {/* Left Column */}
         <div className={styles.infoColumn}>
           <div className={styles.infoCard}>
             <div className={styles.cardHeader}>
-              <span className={styles.cardIcon}>🙏</span>
-              <h2 className={styles.cardTitle}>Church Information</h2>
-              <p className={styles.cardDescription}>Connect with us through any of these channels</p>
+              <h2 className={styles.cardTitle}>Contact Information</h2>
+              <p className={styles.cardSubtitle}>Direct ways to reach us</p>
             </div>
 
-            <div className={styles.infoGrid}>
+            <div className={styles.infoList}>
               {contactInfo.map((info, index) => (
-                <div 
-                  key={index} 
-                  className={styles.infoItem}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+                <div key={index} className={styles.infoItem}>
                   <div className={styles.infoIcon}>{info.icon}</div>
-                  <div className={styles.infoContent}>
-                    <h3 className={styles.infoTitle}>{info.title}</h3>
-                    {info.details.map((detail, i) => (
-                      <p key={i} className={styles.infoDetail}>{detail}</p>
-                    ))}
-                  </div>
-                  <a 
-                    href={info.link} 
-                    className={styles.infoLink}
-                    aria-label={`Learn more about ${info.title}`}
-                  >
-                    <span className={styles.linkArrow}>→</span>
-                  </a>
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className={styles.infoText}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {info.label}
+                    </a>
+                  ) : (
+                    <span className={styles.infoText}>{info.label}</span>
+                  )}
                 </div>
               ))}
             </div>
 
-            {/* Social Media */}
-            <div className={styles.socialSection}>
-              <h3 className={styles.socialTitle}>Follow Us</h3>
-              <div className={styles.socialGrid}>
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    className={styles.socialLink}
-                    aria-label={`Follow us on ${social.label}`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <span className={styles.socialIcon}>{social.icon}</span>
-                    <span className={styles.socialLabel}>{social.label}</span>
-                  </a>
-                ))}
+            <div className={styles.emergencyBox}>
+              <div className={styles.emergencyIcon}></div>
+              <div>
+                <h3 className={styles.emergencyTitle}>Emergency Contact</h3>
+                <a href="tel:+251911234567" className={styles.emergencyNumber}>
+                  +251 91 123 4567
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Map Preview */}
-          <div className={styles.mapPreview}>
-            <div className={styles.mapPlaceholder}>
-              <div className={styles.mapOverlay}>
-                <span className={styles.mapText}>📍 Our Location</span>
-                <button className={styles.mapButton}>View on Google Maps</button>
-              </div>
+          <div className={styles.responseTime}>
+            <div className={styles.timeIcon}></div>
+            <div>
+              <h3>Response Time</h3>
+              <p>
+                We typically respond within <strong>24 hours</strong> during business days
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Right Column - Contact Form */}
+        {/* Right Column */}
         <div className={styles.formColumn}>
           <div className={styles.formCard}>
             <div className={styles.formHeader}>
               <h2 className={styles.formTitle}>Send Us a Message</h2>
-              <p className={styles.formDescription}>Fill out the form below and we'll get back to you shortly</p>
+              <p className={styles.formDescription}>
+                Fill out this form and we'll get back to you promptly
+              </p>
             </div>
 
             {isSubmitted ? (
               <div className={styles.successMessage}>
-                <div className={styles.successIcon}>✓</div>
-                <h3 className={styles.successTitle}>Message Sent Successfully!</h3>
-                <p className={styles.successText}>Thank you for contacting us. We'll respond within 24 hours.</p>
+                <h3 className={styles.successTitle}>Message Ready to Send!</h3>
+                <p className={styles.successText}>
+                  Your email app has been opened. Please click <strong>Send</strong>.
+                </p>
+                <button
+                  className={styles.sendAnother}
+                  onClick={() => setIsSubmitted(false)}
+                >
+                  Send Another Message
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.contactForm}>
-                <div className={styles.formRow}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="name" className={styles.formLabel}>
-                      <span className={styles.labelText}>Full Name</span>
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.inputWrapper}>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className={styles.formInput}
-                        placeholder="John Doe"
-                        required
-                      />
-                      <span className={styles.inputIcon}>👤</span>
-                    </div>
+                {error && (
+                  <div className={styles.errorMessage}>
+                    <span className={styles.errorIcon}>⚠️</span>
+                    {error}
                   </div>
+                )}
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.formLabel}>
-                      <span className={styles.labelText}>Email Address</span>
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.inputWrapper}>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={styles.formInput}
-                        placeholder="john@example.com"
-                        required
-                      />
-                      <span className={styles.inputIcon}>✉️</span>
-                    </div>
-                  </div>
-                </div>
+                <div className={styles.formGrid}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className={styles.formInput}
+                  />
 
-                <div className={styles.formRow}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="phone" className={styles.formLabel}>
-                      <span className={styles.labelText}>Phone Number</span>
-                    </label>
-                    <div className={styles.inputWrapper}>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className={styles.formInput}
-                        placeholder="+251 91 123 4567"
-                      />
-                      <span className={styles.inputIcon}>📞</span>
-                    </div>
-                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className={styles.formInput}
+                  />
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="subject" className={styles.formLabel}>
-                      <span className={styles.labelText}>Subject</span>
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.inputWrapper}>
-                      <select
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className={styles.formSelect}
-                        required
-                      >
-                        <option value="">Select a subject</option>
-                        <option value="prayer">Prayer Request</option>
-                        <option value="membership">Church Membership</option>
-                        <option value="event">Event Inquiry</option>
-                        <option value="donation">Donation Question</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <span className={styles.selectIcon}>▼</span>
-                    </div>
-                  </div>
-                </div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className={styles.formInput}
+                  />
 
-                <div className={styles.formGroup}>
-                  <label htmlFor="message" className={styles.formLabel}>
-                    <span className={styles.labelText}>Your Message</span>
-                    <span className={styles.required}>*</span>
-                  </label>
-                  <div className={styles.textareaWrapper}>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className={styles.formTextarea}
-                      placeholder="Type your message here..."
-                      rows={5}
-                      required
-                    />
-                    <span className={styles.textareaIcon}>💬</span>
-                  </div>
-                </div>
-
-                <div className={styles.formFooter}>
-                  <button 
-                    type="submit" 
-                    className={styles.submitButton}
-                    disabled={isSubmitting}
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className={styles.formSelect}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <span className={styles.spinner}></span>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <span className={styles.buttonArrow}>→</span>
-                      </>
-                    )}
-                  </button>
-                  
-                  <p className={styles.privacyNote}>
-                    By submitting this form, you agree to our{" "}
-                    <a href="#privacy" className={styles.privacyLink}>Privacy Policy</a>
-                  </p>
+                    <option value="">Select a topic</option>
+                    <option value="Prayer Request">Prayer Request</option>
+                    <option value="Church Membership">Church Membership</option>
+                    <option value="Event Inquiry">Event Inquiry</option>
+                    <option value="Donation Question">Donation Question</option>
+                    <option value="Spiritual Guidance">Spiritual Guidance</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
+
+                <textarea
+                  name="message"
+                  rows={5}
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className={styles.formTextarea}
+                />
+
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Opening Email..." : "Send Message"}
+                </button>
               </form>
             )}
-
-            {/* Quick Contact */}
-            <div className={styles.quickContact}>
-              <div className={styles.quickItem}>
-                <span className={styles.quickIcon}>📞</span>
-                <div>
-                  <span className={styles.quickLabel}>Emergency Contact</span>
-                  <a href="tel:+251911234567" className={styles.quickValue}>+251 91 123 4567</a>
-                </div>
-              </div>
-              <div className={styles.quickItem}>
-                <span className={styles.quickIcon}>⏰</span>
-                <div>
-                  <span className={styles.quickLabel}>Response Time</span>
-                  <span className={styles.quickValue}>Within 24 hours</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

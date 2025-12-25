@@ -1,4 +1,4 @@
-// Navbar.tsx - Clean Professional Version
+// Navbar.tsx - With About Dropdown
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
@@ -7,54 +7,52 @@ import logo from "../../assets/logo.png";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
+  useEffect(() => setMenuOpen(false), [location.pathname]);
 
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMenuOpen(false);
     };
-    
     document.addEventListener("keydown", handleEscKey);
     return () => document.removeEventListener("keydown", handleEscKey);
   }, []);
 
   const navItems = [
     { id: "home", label: "Home", path: "/" },
-    { id: "about", label: "About", path: "/about" },
+    { 
+      id: "about", 
+      label: "About", 
+      path: "/about",
+      dropdown: [
+        { id: "mission", label: "Mission", path: "/about" },
+        { id: "vision", label: "Vision", path: "/about" },
+        { id: "goal", label: "Goal", path: "/about/" },
+        { id: "history", label: "History", path: "/history" },
+      ]
+    },
     { id: "campus", label: "Campus", path: "/campus" },
     { id: "library", label: "Library", path: "/library" },
-    { id: "testimonial", label: "Testimonials", path: "/testimonial" },
+
   ];
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.navbar} aria-label="Main Navigation">
-        
         {/* Brand */}
         <Link to="/" className={styles.brand}>
           <div className={styles.logoContainer}>
-            <img 
-              src={logo} 
-              alt="Ethiopian Berhane Kristos Church Logo"
-              className={styles.logoImage}
-            />
+            <img src={logo} alt="Ethiopian Berhane Kristos Church Logo" className={styles.logoImage} />
           </div>
           <div className={styles.brandText}>
             <span className={styles.brandLine1}>Ethiopian</span>
@@ -74,7 +72,7 @@ export default function Navbar() {
           <span className={styles.hamburgerLine}></span>
         </button>
 
-        {/* Overlay for mobile */}
+        {/* Overlay */}
         <div 
           className={styles.navOverlay} 
           onClick={() => setMenuOpen(false)}
@@ -84,7 +82,12 @@ export default function Navbar() {
         {/* Navigation Links */}
         <ul className={`${styles.navLinks} ${menuOpen ? styles.navActive : ""}`}>
           {navItems.map((item) => (
-            <li key={item.id}>
+            <li 
+              key={item.id} 
+              className={styles.navItem}
+              onMouseEnter={() => item.dropdown && setDropdownOpen(true)}
+              onMouseLeave={() => item.dropdown && setDropdownOpen(false)}
+            >
               <Link
                 to={item.path}
                 className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}
@@ -92,9 +95,26 @@ export default function Navbar() {
               >
                 {item.label}
               </Link>
+
+              {/* Dropdown */}
+              {item.dropdown && dropdownOpen && (
+                <ul className={styles.dropdown}>
+                  {item.dropdown.map((subItem) => (
+                    <li key={subItem.id}>
+                      <Link 
+                        to={subItem.path} 
+                        className={styles.dropdownLink} 
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {subItem.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
-          
+
           <li>
             <Link
               to="/donate"
@@ -104,7 +124,7 @@ export default function Navbar() {
               Donate
             </Link>
           </li>
-          
+
           <li>
             <Link
               to="/contact"

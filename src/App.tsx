@@ -10,6 +10,9 @@ import Contact from "./components/Contact/Contact";
 import Visit from "./components/visitus/Visit";
 import Footer from "./components/Footer/Footer";
 
+import History from "./components/history/history";
+
+
 function App() {
   return (
     <Router>
@@ -24,14 +27,17 @@ function App() {
           <Route path="/campus" element={<Campus />} />
           <Route path="/library" element={<Library />} />
           <Route path="/visit" element={<Visit />} />
-          <Route path="/Testmonial" element={<Testmonial />}/>
-          
+          <Route path="/Testmonial" element={<Testmonial />} />
           <Route path="/donate" element={<Donate />} />
+          <Route path="/history" element={<History />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
 
+      
+
       {/* Footer */}
+
       <Footer />
     </Router>
   );

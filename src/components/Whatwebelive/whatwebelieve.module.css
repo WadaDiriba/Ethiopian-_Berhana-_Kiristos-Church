@@ -1,0 +1,66 @@
+.believeSection {
+  width: 100%;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f9fafb, #eef6f8);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #0b3c5d;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 650px;
+  margin: 15px auto 0;
+}
+
+.beliefsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  font-size: 3rem;
+  color: #d4af37; /* Gold accent */
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  color: #0b3c5d;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}

@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0, 128, 128, 0.95);
+    background: linear-gradient(135deg, #0b1d2a 0%, #0a2b3a 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
 }
 
 .header.scrolled {
-  background: rgba(0, 128, 128, 0.98);
+   background: linear-gradient(135deg, #0b1d2a 0%, #0a2b3a 100%);
   padding: 0.25rem 0;
 }
 
@@ -29,6 +29,79 @@
   max-width: 1400px;
   margin: 0 auto;
 }
+
+/* Dropdown Menu */
+.navItem {
+  position: relative;
+}
+
+/* Dropdown list */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #0b1d2a; /* Match your navbar theme */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 180px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+/* Show dropdown on hover */
+.navItem:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown links */
+.dropdownLink {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+/* Hover effect for dropdown links */
+.dropdownLink:hover {
+  background-color: #083344;
+  color: #ffffff;
+}
+
+/* Optional: separate dropdown items */
+.dropdown li {
+  border-bottom: 1px solid #083344;
+}
+
+.dropdown li:last-child {
+  border-bottom: none;
+}
+
+/* For mobile: make dropdown links full width */
+@media (max-width: 768px) {
+  .dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .dropdownLink {
+    padding: 14px 20px;
+  }
+}
+
 
 /* Brand / Logo - Clean and elegant */
 .brand {
@@ -135,8 +208,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.6rem 1.5rem;
-  background: linear-gradient(135deg, #00ffff, #00cccc);
+  background: linear-gradient(135deg, #9be0e0, #5fb4b4);
   color: #000;
+  opacity: 0.5;
   border: none;
   border-radius: 25px;
   font-weight: 600;
