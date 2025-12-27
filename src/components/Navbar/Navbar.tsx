@@ -138,4 +138,15 @@ export default function Navbar() {
       </nav>
     </header>
   );
+}export interface Department {
+  id: string;
+  name: string;
+  description: string;
+  head: string;
+  courses: number;
+  students: number;
+  color: string;
+  icon: JSX.Element;
+  careerPaths: string[];
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect, type SetStateAction } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Testmonial.module.css";
 
 const testimonial = [
@@ -20,6 +20,25 @@ const testimonial = [
     role: "Youth Mentor",
     text: "This ministry speaks the language of the next generation without losing biblical truth.",
   },
+   {
+    id: 4,
+    name: "Mikael Tsegaye",
+    role: "Youth Mentor",
+    text: "This ministry speaks the language of the next generation without losing biblical truth.",
+  },
+   {
+    id: 5,
+    name: "Mikael Tsegaye",
+    role: "Youth Mentor",
+    text: "This ministry speaks the language of the next generation without losing biblical truth.",
+  },
+   {
+    id: 6,
+    name: "Mikael Tsegaye",
+    role: "Youth Mentor",
+    text: "This ministry speaks the language of the next generation without losing biblical truth.",
+  },
+  
 ];
 
 export default function Testmonial() {
